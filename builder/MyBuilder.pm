@@ -1,7 +1,7 @@
 package builder::MyBuilder;
 use strict;
 use warnings;
-use parent qw/Module::Build/;
+use parent qw/Module::Build::XSUtil/;
 
 use Cwd::Guard ();
 use File::Spec;
