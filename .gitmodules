@@ -1,3 +1,3 @@
 [submodule "deps/c-geohex3"]
 	path = deps/c-geohex3
-	url = git@github.com:karupanerura/c-geohex3.git
+	url = git://github.com/karupanerura/c-geohex3.git
