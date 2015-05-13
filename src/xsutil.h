@@ -66,3 +66,5 @@
 }
 
 #define XSUTIL_NEW_SVIV_MORTAL(i) sv_2mortal(newSViv(i))
+#define XSUTIL_NEW_SVNV_MORTAL(i) sv_2mortal(newSVnv(i))
+#define XSUTIL_NEW_SVUV_MORTAL(i) sv_2mortal(newSVuv(i))

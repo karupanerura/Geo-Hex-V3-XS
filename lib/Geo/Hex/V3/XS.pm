@@ -21,6 +21,15 @@ sub new {
     }
 }
 
+BEGIN {
+    my $src = '';
+    for my $name (qw/lat lng x y code level size/) {
+        $src .= "sub $name { shift->{$name} }\n";
+    }
+    eval $src;
+    die $@ if $@;
+}
+
 1;
 __END__
 
