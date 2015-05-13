@@ -1,6 +1,9 @@
 language: perl
 sudo: false
 
+before_install:
+  - git submodule update --init --recursive
+
 perl:
   - "5.12"
   - "5.14"
