@@ -1,6 +1,12 @@
-requires 'perl', '5.008001';
+requires 'Exporter', '5.57';
 
-on 'test' => sub {
+on configure => sub {
+    requires 'Cwd::Guard';
+    requires 'Module::Build::XSUtil';
+    requires 'parent';
+};
+
+on test => sub {
     requires 'Test::More', '0.98';
 };
 
