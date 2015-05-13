@@ -43,15 +43,58 @@ __END__
 
 =head1 NAME
 
-Geo::Hex::V3::XS - It's new $module
+Geo::Hex::V3::XS - c-geohex3 Perl5 binding.
 
 =head1 SYNOPSIS
 
     use Geo::Hex::V3::XS;
 
+    my $zone = Geo::Hex::V3::XS->new(code => 'XM488276746');
+
+    # or
+
+    my $zone = Geo::Hex::V3::XS->new(lat => 35.579826, lng => 139.654524, level => 9);
+
+    say 'geohex.code:  ', $zone->code;
+    say 'geohex.lat:   ', $zone->lat;
+    say 'geohex.lng:   ', $zone->lng;
+    say 'geohex.level: ', $zone->level;
+
 =head1 DESCRIPTION
 
-Geo::Hex::V3::XS is ...
+Geo::Hex::V3::XS is 
+
+=head1 FUNCTIONS
+
+=over
+
+=item my $geohex_code = encode_geohex($lat, $lng, $level);
+
+=item my ($lat, $lng, $code) = decode_geohex($geohex_code);
+
+=back
+
+=head1 METHODS
+
+=over
+
+=item my $zone = Geo::Hex::V3::XS->new(...);
+
+=item $zone->lat;
+
+=item $zone->lng;
+
+=item $zone->x;
+
+=item $zone->y;
+
+=item $zone->code;
+
+=item $zone->level;
+
+=item $zone->size;
+
+=back
 
 =head1 LICENSE
 
