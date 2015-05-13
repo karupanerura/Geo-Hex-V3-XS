@@ -4,6 +4,8 @@ use strict;
 use warnings;
 
 our $VERSION = "0.01";
+use Exporter 5.57 qw/import/;
+our @EXPORT_OK = qw/encode_geohex decode_geohex/;
 
 use XSLoader;
 XSLoader::load(__PACKAGE__, $VERSION);
@@ -20,6 +22,10 @@ sub new {
         die "Usage: $class->new(code => \$geohex_code) or $class->new(lat => \$lat, lng => \$lng, lng => \$level)";
     }
 }
+
+# shortcut functions
+sub encode_geohex { __PACKAGE__->_new_with_latlng(@_)->{code} }
+sub decode_geohex { @{__PACKAGE__->_new_with_code(@_)}{qw/lat lng level/} }
 
 BEGIN {
     my $src = '';
