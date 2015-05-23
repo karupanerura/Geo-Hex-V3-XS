@@ -1,10 +1,9 @@
 language: perl
 sudo: false
 
-compiler:
-  - clang
-
 before_install:
+  - git clean -dxf
+  - git submodule foreach --recursive git clean -dxf
   - git submodule update --init --recursive
 
 perl:
