@@ -5,12 +5,18 @@ use parent qw/Module::Build::XSUtil/;
 
 use Cwd::Guard ();
 use File::Spec;
+use File::Which;
 
 sub new {
     my ($self, %args) = @_;
 
     if ( $^O =~ m!(?:MSWin32|cygwin)! ) {
         print "This module does not support Windows.\n";
+        exit 0;
+    }
+
+    unless (which 'cmake') {
+        print "This module require cmake.\n";
         exit 0;
     }
 
