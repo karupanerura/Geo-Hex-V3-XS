@@ -2,9 +2,8 @@ language: perl
 sudo: false
 
 before_install:
-  - git clean -dxf
-  - git submodule foreach --recursive git clean -dxf
   - git submodule update --init --recursive
+  - cpanm --installdeps --with-develop .
 
 perl:
   - "5.12"
