@@ -27,15 +27,6 @@ sub new {
 sub encode_geohex { __PACKAGE__->_new_with_latlng(@_)->{code} }
 sub decode_geohex { @{__PACKAGE__->_new_with_code(@_)}{qw/lat lng level/} }
 
-BEGIN {
-    my $src = '';
-    for my $name (qw/lat lng x y code level size/) {
-        $src .= "sub $name { shift->{$name} }\n";
-    }
-    eval $src;
-    die $@ if $@;
-}
-
 1;
 __END__
 

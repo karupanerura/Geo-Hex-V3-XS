@@ -57,3 +57,27 @@ PPCODE:
   XPUSHs(self);
   XSRETURN(1);
 }
+
+void
+lat(...)
+ALIAS:
+  Geo::Hex::V3::XS::lat   = 0
+  Geo::Hex::V3::XS::lng   = 1
+  Geo::Hex::V3::XS::x     = 2
+  Geo::Hex::V3::XS::y     = 3
+  Geo::Hex::V3::XS::code  = 4
+  Geo::Hex::V3::XS::level = 5
+  Geo::Hex::V3::XS::size  = 6
+PREINIT:
+  static const char *key[7] = {"lat", "lng", "x", "y", "code", "level", "size"};
+PPCODE:
+{
+  if (items != 1) {
+    croak("Invalid argument count: %d", items);
+  }
+  HV* state = (HV*)SvRV(ST(0));
+
+  SV** val = XSUTIL_HV_FETCH(state, key[ix]);
+  XPUSHs(*val);
+  XSRETURN(1);
+}
