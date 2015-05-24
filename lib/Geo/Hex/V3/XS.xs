@@ -24,17 +24,15 @@ PPCODE:
         const geohex_t geohex = geohex_get_zone_by_code(code);
         const HV* state = new_state(aTHX_ &geohex);
         SV* self = bless_state(aTHX_ state, class);
-        XPUSHs(self);
+        PUSHs(self);
         XSRETURN(1);
       }
       break;
     case GEOHEX3_VERIFY_RESULT_INVALID_CODE:
-      XPUSHs(&PL_sv_undef);
-      XSRETURN(1);
+      XSRETURN(0);
       break;
     case GEOHEX3_VERIFY_RESULT_INVALID_LEVEL:
-      XPUSHs(&PL_sv_undef);
-      XSRETURN(1);
+      XSRETURN(0);
       break;
   }
 }
@@ -54,7 +52,7 @@ PPCODE:
   const geohex_t geohex = geohex_get_zone_by_location(geohex_location((long double)lat, (long double)lng), (geohex_level_t)level);
   const HV* state = new_state(aTHX_ &geohex);
   SV* self = bless_state(aTHX_ state, class);
-  XPUSHs(self);
+  PUSHs(self);
   XSRETURN(1);
 }
 
@@ -70,8 +68,7 @@ PPCODE:
   const UV level = SvUV(ST(2));
 
   const geohex_t geohex = geohex_get_zone_by_location(geohex_location((long double)lat, (long double)lng), (geohex_level_t)level);
-  SV* code = newSVpvn(geohex.code, geohex.level+2);
-  mXPUSHs(code);
+  mPUSHp(geohex.code, geohex.level+2);
   XSRETURN(1);
 }
 
@@ -125,6 +122,6 @@ PPCODE:
   HV* state = (HV*)SvRV(ST(0));
 
   SV** val = XSUTIL_HV_FETCH(state, key[ix]);
-  XPUSHs(*val);
+  PUSHs(*val);
   XSRETURN(1);
 }
