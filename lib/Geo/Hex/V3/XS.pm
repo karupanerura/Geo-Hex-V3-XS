@@ -23,10 +23,6 @@ sub new {
     }
 }
 
-# shortcut functions
-sub encode_geohex { __PACKAGE__->_new_with_latlng(@_)->{code} }
-sub decode_geohex { @{__PACKAGE__->_new_with_code(@_)}{qw/lat lng level/} }
-
 1;
 __END__
 

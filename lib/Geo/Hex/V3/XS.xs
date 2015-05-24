@@ -59,6 +59,53 @@ PPCODE:
 }
 
 void
+encode_geohex(...)
+PPCODE:
+{
+  if (items != 3) {
+    croak("Invalid argument count: %d", items);
+  }
+  const NV lat   = SvNV(ST(0));
+  const NV lng   = SvNV(ST(1));
+  const UV level = SvUV(ST(2));
+
+  const geohex_t geohex = geohex_get_zone_by_location(geohex_location((long double)lat, (long double)lng), (geohex_level_t)level);
+  SV* code = newSVpvn(geohex.code, geohex.level+2);
+  mXPUSHs(code);
+  XSRETURN(1);
+}
+
+void
+decode_geohex(...)
+PPCODE:
+{
+  if (items != 1) {
+    croak("Invalid argument count: %d", items);
+  }
+  const char *code = SvPV_nolen(ST(0));
+
+  const geohex_verify_result_t result = geohex_verify_code(code);
+  switch (result) {
+    case GEOHEX3_VERIFY_RESULT_SUCCESS:
+      {
+        const geohex_t geohex = geohex_get_zone_by_code(code);
+        EXTEND(SP, 3);
+        mPUSHn((NV)geohex.location.lat);
+        mPUSHn((NV)geohex.location.lng);
+        mPUSHu((UV)geohex.level);
+        XSRETURN(3);
+      }
+      break;
+    case GEOHEX3_VERIFY_RESULT_INVALID_CODE:
+      XSRETURN(0);
+      break;
+    case GEOHEX3_VERIFY_RESULT_INVALID_LEVEL:
+      XSRETURN(0);
+      break;
+  }
+}
+
+void
 lat(...)
 ALIAS:
   Geo::Hex::V3::XS::lat   = 0
