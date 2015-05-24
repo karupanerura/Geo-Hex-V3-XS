@@ -24,19 +24,19 @@ Geo::Hex::V3::XS is
 
 # FUNCTIONS
 
-- my $geohex\_code = encode\_geohex($lat, $lng, $level);
-- my ($lat, $lng, $code) = decode\_geohex($geohex\_code);
+- `my $geohex_code = encode_geohex($lat, $lng, $level)`
+- `my ($lat, $lng, $code) = decode_geohex($geohex_code)`
 
 # METHODS
 
-- my $zone = Geo::Hex::V3::XS->new(...);
-- $zone->lat;
-- $zone->lng;
-- $zone->x;
-- $zone->y;
-- $zone->code;
-- $zone->level;
-- $zone->size;
+- `my $zone = Geo::Hex::V3::XS->new(...)`
+- `$zone->lat`
+- `$zone->lng`
+- `$zone->x`
+- `$zone->y`
+- `$zone->code`
+- `$zone->level`
+- `$zone->size`
 
 # LICENSE
 

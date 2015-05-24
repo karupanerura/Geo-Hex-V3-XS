@@ -26,6 +26,8 @@ sub new {
 1;
 __END__
 
+=for stopwords c-geohex3
+
 =encoding utf-8
 
 =head1 NAME
@@ -55,9 +57,9 @@ Geo::Hex::V3::XS is
 
 =over
 
-=item my $geohex_code = encode_geohex($lat, $lng, $level);
+=item C<my $geohex_code = encode_geohex($lat, $lng, $level)>
 
-=item my ($lat, $lng, $code) = decode_geohex($geohex_code);
+=item C<my ($lat, $lng, $code) = decode_geohex($geohex_code)>
 
 =back
 
@@ -65,21 +67,21 @@ Geo::Hex::V3::XS is
 
 =over
 
-=item my $zone = Geo::Hex::V3::XS->new(...);
+=item C<my $zone = Geo::Hex::V3::XS-E<gt>new(...)>
 
-=item $zone->lat;
+=item C<$zone-E<gt>lat>
 
-=item $zone->lng;
+=item C<$zone-E<gt>lng>
 
-=item $zone->x;
+=item C<$zone-E<gt>x>
 
-=item $zone->y;
+=item C<$zone-E<gt>y>
 
-=item $zone->code;
+=item C<$zone-E<gt>code>
 
-=item $zone->level;
+=item C<$zone-E<gt>level>
 
-=item $zone->size;
+=item C<$zone-E<gt>size>
 
 =back
 
