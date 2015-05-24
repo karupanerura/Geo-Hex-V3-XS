@@ -21,9 +21,9 @@ PPCODE:
   switch (result) {
     case GEOHEX3_VERIFY_RESULT_SUCCESS:
       {
-        geohex_t geohex = geohex_get_zone_by_code(code);
-        HV* state = new_state(aTHX_ &geohex);
-        SV* self  = bless_state(aTHX_ state, class);
+        const geohex_t geohex = geohex_get_zone_by_code(code);
+        const HV* state = new_state(aTHX_ &geohex);
+        SV* self = bless_state(aTHX_ state, class);
         XPUSHs(self);
         XSRETURN(1);
       }
@@ -51,9 +51,9 @@ PPCODE:
   const NV   lng    = SvNV(ST(2));
   const UV   level  = SvUV(ST(3));
 
-  geohex_t geohex = geohex_get_zone_by_location(geohex_location((long double)lat, (long double)lng), (geohex_level_t)level);
-  HV* state = new_state(aTHX_ &geohex);
-  SV* self  = bless_state(aTHX_ state, class);
+  const geohex_t geohex = geohex_get_zone_by_location(geohex_location((long double)lat, (long double)lng), (geohex_level_t)level);
+  const HV* state = new_state(aTHX_ &geohex);
+  SV* self = bless_state(aTHX_ state, class);
   XPUSHs(self);
   XSRETURN(1);
 }

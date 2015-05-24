@@ -17,7 +17,7 @@ HV* init_state (pTHX_ HV* state, const geohex_t *geohex) {
   return state;
 }
 
-SV* bless_state (pTHX_ HV* state, const char *class) {
+SV* bless_state (pTHX_ const HV* state, const char *class) {
   SV* self = newRV_inc_mortal((SV*)state);
   sv_bless(self, gv_stashpv(class, 1));
   SvREADONLY_on(self);
