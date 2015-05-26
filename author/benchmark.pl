@@ -67,7 +67,7 @@ print '-' x 60, "\n";
 
 print '-' x 60, "\n";
 print 'Converts latlng to geohex:', "\n";
-cmpthese timethese 30000 => {
+cmpthese timethese 60000 => {
     pp => sub {
         Geo::Hex::V3::latlng2geohex(@$_) for @latlngs;
     },
@@ -79,7 +79,7 @@ print '-' x 60, "\n";
 
 print '-' x 60, "\n";
 print 'Converts geohex to latlng:', "\n";
-cmpthese timethese 30000 => {
+cmpthese timethese 60000 => {
     pp => sub {
         Geo::Hex::V3::geohex2latlng($_) for @geohexes;
     },
@@ -254,36 +254,37 @@ ok 16 - XM488276746051234
 ------------------------------------------------------------
 Creates zone object from geohex:
 Benchmark: timing 30000 iterations of pp, xs...
-        pp: 21 wallclock secs (20.84 usr +  0.10 sys = 20.94 CPU) @ 1432.66/s (n=30000)
+        pp: 21 wallclock secs (21.49 usr +  0.09 sys = 21.58 CPU) @ 1390.18/s (n=30000)
         xs:  2 wallclock secs ( 1.84 usr +  0.01 sys =  1.85 CPU) @ 16216.22/s (n=30000)
       Rate    pp    xs
-pp  1433/s    --  -91%
-xs 16216/s 1032%    --
+pp  1390/s    --  -91%
+xs 16216/s 1066%    --
 ------------------------------------------------------------
 ------------------------------------------------------------
 Creates zone object from latlng:
 Benchmark: timing 30000 iterations of pp, xs...
-        pp: 22 wallclock secs (21.64 usr +  0.10 sys = 21.74 CPU) @ 1379.94/s (n=30000)
-        xs:  2 wallclock secs ( 1.90 usr +  0.00 sys =  1.90 CPU) @ 15789.47/s (n=30000)
+        pp: 23 wallclock secs (22.65 usr +  0.11 sys = 22.76 CPU) @ 1318.10/s (n=30000)
+        xs:  2 wallclock secs ( 1.98 usr +  0.01 sys =  1.99 CPU) @ 15075.38/s (n=30000)
       Rate    pp    xs
-pp  1380/s    --  -91%
-xs 15789/s 1044%    --
+pp  1318/s    --  -91%
+xs 15075/s 1044%    --
 ------------------------------------------------------------
 ------------------------------------------------------------
 Converts latlng to geohex:
-Benchmark: timing 30000 iterations of pp, xs...
-        pp: 21 wallclock secs (21.49 usr +  0.10 sys = 21.59 CPU) @ 1389.53/s (n=30000)
-        xs:  1 wallclock secs ( 0.59 usr +  0.00 sys =  0.59 CPU) @ 50847.46/s (n=30000)
+Benchmark: timing 60000 iterations of pp, xs...
+Write failed: Broken pipe
+        pp: 46 wallclock secs (45.80 usr +  0.20 sys = 46.00 CPU) @ 1304.35/s (n=60000)
+        xs:  2 wallclock secs ( 1.17 usr +  0.00 sys =  1.17 CPU) @ 51282.05/s (n=60000)
       Rate    pp    xs
-pp  1390/s    --  -97%
-xs 50847/s 3559%    --
+pp  1304/s    --  -97%
+xs 51282/s 3832%    --
 ------------------------------------------------------------
 ------------------------------------------------------------
 Converts geohex to latlng:
-Benchmark: timing 30000 iterations of pp, xs...
-        pp: 21 wallclock secs (21.22 usr +  0.09 sys = 21.31 CPU) @ 1407.79/s (n=30000)
-        xs:  1 wallclock secs ( 0.70 usr +  0.01 sys =  0.71 CPU) @ 42253.52/s (n=30000)
+Benchmark: timing 60000 iterations of pp, xs...
+        pp: 43 wallclock secs (42.95 usr +  0.19 sys = 43.14 CPU) @ 1390.82/s (n=60000)
+        xs:  1 wallclock secs ( 1.38 usr +  0.01 sys =  1.39 CPU) @ 43165.47/s (n=60000)
       Rate    pp    xs
-pp  1408/s    --  -97%
-xs 42254/s 2901%    --
+pp  1391/s    --  -97%
+xs 43165/s 3004%    --
 ------------------------------------------------------------
