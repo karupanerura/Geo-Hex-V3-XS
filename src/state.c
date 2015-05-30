@@ -1,6 +1,7 @@
 #include "state.h"
 #include "geohex3.h"
 #include "xsutil.h"
+#include <string.h>
 
 HV* new_state (pTHX_ const geohex_t *geohex) {
   return init_state(aTHX_ newHV_mortal(), geohex);
@@ -22,4 +23,23 @@ SV* bless_state (pTHX_ const HV* state, const char *class) {
   sv_bless(self, gv_stashpv(class, 1));
   SvREADONLY_on(self);
   return self;
+}
+
+geohex_t deflate_to_geohex(pTHX_ HV* state) {
+  SV** lat   = XSUTIL_HV_FETCH(state, "lat");
+  SV** lng   = XSUTIL_HV_FETCH(state, "lng");
+  SV** x     = XSUTIL_HV_FETCH(state, "x");
+  SV** y     = XSUTIL_HV_FETCH(state, "y");
+  SV** code  = XSUTIL_HV_FETCH(state, "code");
+  SV** level = XSUTIL_HV_FETCH(state, "level");
+  SV** size  = XSUTIL_HV_FETCH(state, "size");
+
+  geohex_t geohex = {
+    .location   = geohex_location((long double)SvNV(*lat), (long double)SvNV(*lng)),
+    .coordinate = geohex_coordinate((long)SvIV(*x), (long)SvIV(*y)),
+    .level      = (geohex_level_t)SvUV(*level),
+    .size       = (long double)SvNV(*size)
+  };
+  stpcpy(geohex.code, SvPV_nolen(*code));
+  return geohex;
 }

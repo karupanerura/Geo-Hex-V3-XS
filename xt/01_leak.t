@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use utf8;
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 use Test::LeakTrace;
 use Geo::Hex::V3::XS qw/encode_geohex decode_geohex/;
 
@@ -17,3 +17,8 @@ no_leaks_ok {
         $zone->$accessor;
     }
 } 'accessors';
+
+no_leaks_ok {
+    my $zone = Geo::Hex::V3::XS->new(code => "XM0123");
+    my @locations = $zone->polygon();
+} 'polygon';

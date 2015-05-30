@@ -125,3 +125,57 @@ PPCODE:
   PUSHs(*val);
   XSRETURN(1);
 }
+
+void
+polygon(...)
+PPCODE:
+{
+  if (items != 1) {
+    croak("Invalid argument count: %d", items);
+  }
+  HV* state = (HV*)SvRV(ST(0));
+
+  const geohex_t geohex = deflate_to_geohex(aTHX_ state);
+  const geohex_polygon_t polygon = geohex_get_hex_polygon(&geohex);
+
+  EXTEND(SP, 6);
+
+  {
+    HV* location = newHV_mortal();
+    XSUTIL_HV_STORE(location, "lat", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.top.right.lat));
+    XSUTIL_HV_STORE(location, "lng", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.top.right.lng));
+    PUSHs(newRV_inc_mortal((SV*)location));
+  }
+  {
+    HV* location = newHV_mortal();
+    XSUTIL_HV_STORE(location, "lat", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.top.left.lat));
+    XSUTIL_HV_STORE(location, "lng", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.top.left.lng));
+    PUSHs(newRV_inc_mortal((SV*)location));
+  }
+  {
+    HV* location = newHV_mortal();
+    XSUTIL_HV_STORE(location, "lat", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.middle.right.lat));
+    XSUTIL_HV_STORE(location, "lng", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.middle.right.lng));
+    PUSHs(newRV_inc_mortal((SV*)location));
+  }
+  {
+    HV* location = newHV_mortal();
+    XSUTIL_HV_STORE(location, "lat", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.middle.left.lat));
+    XSUTIL_HV_STORE(location, "lng", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.middle.left.lng));
+    PUSHs(newRV_inc_mortal((SV*)location));
+  }
+  {
+    HV* location = newHV_mortal();
+    XSUTIL_HV_STORE(location, "lat", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.bottom.right.lat));
+    XSUTIL_HV_STORE(location, "lng", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.bottom.right.lng));
+    PUSHs(newRV_inc_mortal((SV*)location));
+  }
+  {
+    HV* location = newHV_mortal();
+    XSUTIL_HV_STORE(location, "lat", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.bottom.left.lat));
+    XSUTIL_HV_STORE(location, "lng", XSUTIL_NEW_SVNV_MORTAL((NV)polygon.bottom.left.lng));
+    PUSHs(newRV_inc_mortal((SV*)location));
+  }
+
+  XSRETURN(6);
+}
