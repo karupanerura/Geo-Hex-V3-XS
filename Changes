@@ -2,6 +2,10 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+0.02 2015-05-31T02:07:10Z
+
+    - Fixed license to MIT.
+
 0.01 2015-05-31T01:54:34Z
 
     - original version
