@@ -26,7 +26,7 @@ sub new {
 1;
 __END__
 
-=for stopwords c-geohex3
+=for stopwords c-geohex3 geohex geohex's
 
 =encoding utf-8
 
