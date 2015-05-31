@@ -32,7 +32,7 @@ __END__
 
 =head1 NAME
 
-Geo::Hex::V3::XS - c-geohex3 Perl5 binding.
+Geo::Hex::V3::XS - GeoHex implementation with XS. (c-geohex3 Perl5 binding.)
 
 =head1 SYNOPSIS
 
@@ -51,7 +51,7 @@ Geo::Hex::V3::XS - c-geohex3 Perl5 binding.
 
 =head1 DESCRIPTION
 
-Geo::Hex::V3::XS is 
+Geo::Hex::V3::XS is L<GeoHex|http://geohex.net/> implementation.
 
 =head1 FUNCTIONS
 
@@ -59,7 +59,12 @@ Geo::Hex::V3::XS is
 
 =item C<my $geohex_code = encode_geohex($lat, $lng, $level)>
 
+Convert location,level to geohex's code.
+
 =item C<my ($lat, $lng, $code) = decode_geohex($geohex_code)>
+
+Convert geohex's code to location,level.
+This location is center of geohex.
 
 =back
 
@@ -69,19 +74,57 @@ Geo::Hex::V3::XS is
 
 =item C<my $zone = Geo::Hex::V3::XS-E<gt>new(...)>
 
+Create geohex zone object.
+
+Arguments can be:
+
+=over
+
+=item * C<code>
+
+Create geohex zone object from geohex code.
+
+    use Geo::Hex::V3::XS;
+
+    my $zone = Geo::Hex::V3::XS->new(code => 'XM488548');
+
+=item * C<lat/lng/level>
+
+Create geohex zone object from location with level.
+
+    use Geo::Hex::V3::XS;
+
+    my $zone = Geo::Hex::V3::XS->new(
+        lat   => 40.5814792855475,
+        lng   => 134.296601127877,
+        level => 7,
+    );
+
+=back
+
 =item C<$zone-E<gt>lat>
+
+Get geohex center location latitude.
 
 =item C<$zone-E<gt>lng>
 
-=item C<$zone-E<gt>x>
-
-=item C<$zone-E<gt>y>
+Get geohex center location longitude.
 
 =item C<$zone-E<gt>code>
 
+Get geohex code.
+
 =item C<$zone-E<gt>level>
 
+Get geohex level. (0-15)
+
 =item C<$zone-E<gt>size>
+
+Get geohex size.
+
+=item C<my @locations = $zone-E<gt>polygon()>
+
+Get vertex locations of a geohex polygon.
 
 =back
 

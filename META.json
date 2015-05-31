@@ -1,5 +1,5 @@
 {
-   "abstract" : "c-geohex3 Perl5 binding.",
+   "abstract" : "GeoHex implementation with XS. (c-geohex3 Perl5 binding.)",
    "author" : [
       "karupanerura <karupa@cpan.org>"
    ],
