@@ -1,6 +1,7 @@
 name = "Geo-Hex-V3-XS"
 badges   = ["travis"]
 c_source = ["src"]
+license  = "mit"
 
 [build]
 build_class = "builder::MyBuilder"
