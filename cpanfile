@@ -3,6 +3,7 @@ requires 'Exporter', '5.57';
 on configure => sub {
     requires 'Cwd::Guard';
     requires 'Module::Build::XSUtil';
+    requires 'File::Which';
     requires 'parent';
 };
 

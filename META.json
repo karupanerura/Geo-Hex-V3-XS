@@ -29,6 +29,7 @@
       "configure" : {
          "requires" : {
             "Cwd::Guard" : "0",
+            "File::Which" : "0",
             "Module::Build::XSUtil" : "0.03",
             "parent" : "0"
          }
