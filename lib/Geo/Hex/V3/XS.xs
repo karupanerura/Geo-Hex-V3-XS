@@ -103,6 +103,20 @@ PPCODE:
 }
 
 void
+geohex_hexsize(...)
+PPCODE:
+{
+  if (items != 1) {
+    croak("Invalid argument count: %d", items);
+  }
+  const UV level = SvUV(ST(0));
+
+  const long double size = geohex_hexsize((geohex_level_t)level);
+  mPUSHn((NV)size);
+  XSRETURN(1);
+}
+
+void
 lat(...)
 ALIAS:
   Geo::Hex::V3::XS::lat   = 0
