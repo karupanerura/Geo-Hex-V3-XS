@@ -2,6 +2,10 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+0.05 2015-06-03T03:43:00Z
+
+   - Fixed dependency.
+
 0.04 2015-06-03T03:16:10Z
 
    - No run geohex-3 testing on build phase.
