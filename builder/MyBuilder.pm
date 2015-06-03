@@ -33,7 +33,6 @@ sub ACTION_code {
         my $guard = Cwd::Guard::cwd_guard(File::Spec->catdir('deps', 'c-geohex3'));
         system('cmake', '-DCMAKE_INSTALL_PREFIX=local', '.') == 0 or die;
         system('make') == 0 or die;
-        system('make', 'test') == 0 or die;
         system('make', 'install') == 0 or die;
     }
 
