@@ -1,35 +1,20 @@
 use strict;
-use Test::More;
+use Test::More tests => 12;
 
 use Geo::Hex::V3::XS;
 
 my $geohex = Geo::Hex::V3::XS->new(code => 'OL3371');
-is_deeply [$geohex->polygon], [
-    {
-        lat => -45.4777503834569,
-        lng => 49.4650205761317
-    },
-    {
-        lat => -45.4777503834569,
-        lng => 49.3004115226337
-    },
-    {
-        lat => -45.3777036891565,
-        lng => 49.5473251028807
-    },
-    {
-        lat => -45.3777036891565,
-        lng => 49.2181069958848
-    },
-    {
-        lat => -45.2774796666239,
-        lng => 49.4650205761317
-    },
-    {
-        lat => -45.2774796666239,
-        lng => 49.3004115226337
-   },
-];
-
-done_testing;
+my @locations = $geohex->polygon();
+like $locations[0]{lat}, qr/^-45\.47775038345/;
+like $locations[0]{lng}, qr/^49\.46502057613/;
+like $locations[1]{lat}, qr/^-45\.47775038345/;
+like $locations[1]{lng}, qr/^49\.30041152263/;
+like $locations[2]{lat}, qr/^-45\.37770368915/;
+like $locations[2]{lng}, qr/^49\.54732510288/;
+like $locations[3]{lat}, qr/^-45\.37770368915/;
+like $locations[3]{lng}, qr/^49\.21810699588/;
+like $locations[4]{lat}, qr/^-45\.27747966662/;
+like $locations[4]{lng}, qr/^49\.46502057613/;
+like $locations[5]{lat}, qr/^-45\.27747966662/;
+like $locations[5]{lng}, qr/^49\.30041152263/;
 

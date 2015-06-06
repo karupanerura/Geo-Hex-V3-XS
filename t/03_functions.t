@@ -11,7 +11,6 @@ like $lat, qr/^35\.579825/;
 like $lng, qr/^139\.654524/;
 is $level, 9;
 
-is geohex_hexsize(7), 339.336963200054;
-is geohex_hexsize(9), 37.7041070222282;
-
+like geohex_hexsize(7), qr/^339\.33696320005/;
+like geohex_hexsize(9), qr/^37\.704107022228/;
 
