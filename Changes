@@ -2,6 +2,10 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+0.07 2015-06-22T23:45:38Z
+
+   - Fixed compile option.
+
 0.06 2015-06-06T01:08:43Z
 
    - Fixed #1 test expected value for `-Duselongdouble` perl.
