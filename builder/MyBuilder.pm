@@ -20,8 +20,8 @@ sub new {
         exit 0;
     }
 
-    $args{extra_compiler_flags} = ['-I' . File::Spec->rel2abs(File::Spec->catdir('deps', 'c-geohex3', 'local', 'include'))];
-    $args{extra_linker_flags} = [File::Spec->rel2abs(File::Spec->catdir('deps', 'c-geohex3', 'local', 'lib', 'libgeohex3.a'))];
+    $args{extra_compiler_flags} = ['-std=gnu99', '-fPIC', '-I' . File::Spec->rel2abs(File::Spec->catdir('deps', 'c-geohex3', 'local', 'include'))];
+    $args{extra_linker_flags}   = [File::Spec->rel2abs(File::Spec->catdir('deps', 'c-geohex3', 'local', 'lib', 'libgeohex3.a'))];
 
     return $self->SUPER::new(%args);
 }
