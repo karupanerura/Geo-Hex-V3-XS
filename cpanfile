@@ -13,5 +13,4 @@ on test => sub {
 
 on develop => sub {
     requires 'Test::LeakTrace';
-    requires 'Test::Vars';
 };
