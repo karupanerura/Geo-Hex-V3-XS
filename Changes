@@ -2,6 +2,10 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+0.08 2015-08-15T09:25:49Z
+
+   - Upgrade c-geohex3 to 1.40. (improvement of accuracy)
+
 0.07 2015-06-22T23:45:38Z
 
    - Fixed compile option.

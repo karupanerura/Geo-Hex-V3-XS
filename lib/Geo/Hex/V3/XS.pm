@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = "0.07";
+our $VERSION = "0.08";
 use Exporter 5.57 qw/import/;
 our @EXPORT_OK = qw/encode_geohex decode_geohex geohex_hexsize/;
 
