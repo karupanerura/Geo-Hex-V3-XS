@@ -40,6 +40,9 @@ geohex_t deflate_to_geohex(pTHX_ HV* state) {
     .level      = (geohex_level_t)SvUV(*level),
     .size       = (long double)SvNV(*size)
   };
-  stpcpy(geohex.code, SvPV_nolen(*code));
+
+  STRLEN len;
+  const char *code_p = SvPV(*code, len);
+  strncpy(geohex.code, code_p, (size_t)len);
   return geohex;
 }
