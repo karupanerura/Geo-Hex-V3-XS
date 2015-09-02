@@ -57,6 +57,25 @@ PPCODE:
 }
 
 void
+_new_with_xy(...)
+PPCODE:
+{
+  if (items != 4) {
+    croak("Invalid argument count: %d", items);
+  }
+  const char *class = SvPV_nolen(ST(0));
+  const IV   x      = SvIV(ST(1));
+  const IV   y      = SvIV(ST(2));
+  const UV   level  = SvUV(ST(3));
+
+  const geohex_t geohex = geohex_get_zone_by_coordinate(geohex_coordinate((long)x, (long)y), (geohex_level_t)level);
+  const HV* state = new_state(aTHX_ &geohex);
+  SV* self = bless_state(aTHX_ state, class);
+  PUSHs(self);
+  XSRETURN(1);
+}
+
+void
 encode_geohex(...)
 PPCODE:
 {
