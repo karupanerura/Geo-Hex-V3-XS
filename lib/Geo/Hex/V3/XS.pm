@@ -47,6 +47,10 @@ Geo::Hex::V3::XS - GeoHex implementation with XS. (c-geohex3 Perl5 binding.)
 
     my $zone = Geo::Hex::V3::XS->new(lat => 35.579826, lng => 139.654524, level => 9);
 
+    # or
+
+    my $zone = Geo::Hex::V3::XS->new(x => 11554, y => -3131, level => 7);
+
     say 'geohex.code:  ', $zone->code;
     say 'geohex.lat:   ', $zone->lat;
     say 'geohex.lng:   ', $zone->lng;
@@ -107,6 +111,18 @@ Create geohex zone object from location with level.
         level => 7,
     );
 
+=item * C<x/y/level>
+
+Create geohex zone object from coordinate with level.
+
+    use Geo::Hex::V3::XS;
+
+    my $zone = Geo::Hex::V3::XS->new(
+        x     => 11554,
+        y     => -3131,
+        level => 7,
+    );
+
 =back
 
 =item C<$zone-E<gt>lat>
@@ -116,6 +132,14 @@ Get geohex center location latitude.
 =item C<$zone-E<gt>lng>
 
 Get geohex center location longitude.
+
+=item C<$zone-E<gt>x>
+
+Get geohex center x coordinate.
+
+=item C<$zone-E<gt>y>
+
+Get geohex center y coordinate.
 
 =item C<$zone-E<gt>code>
 
