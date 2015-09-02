@@ -2,6 +2,8 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+   - Added x/y/level constructor
+
 0.08 2015-08-15T09:25:49Z
 
    - Upgrade c-geohex3 to 1.40. (improvement of accuracy)
