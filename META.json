@@ -68,6 +68,9 @@
          "web" : "https://github.com/karupanerura/Geo-Hex-V3-XS"
       }
    },
-   "version" : "0.09",
+   "version" : "0.10",
+   "x_contributors" : [
+      "Pine Mizune <pinemz@gmail.com>"
+   ],
    "x_serialization_backend" : "JSON::PP version 2.27203"
 }

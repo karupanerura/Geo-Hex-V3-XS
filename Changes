@@ -2,6 +2,10 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+0.10 2015-09-03T06:43:16Z
+
+    - Fixed x/y/level constructor.
+
 0.09 2015-09-03T00:48:30Z
 
    - Added x/y/level constructor
