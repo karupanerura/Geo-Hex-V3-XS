@@ -4,7 +4,7 @@
       "karupanerura <karupa@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.4.3, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Minilla/v2.5.0, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "mit"
    ],
@@ -30,7 +30,6 @@
          "requires" : {
             "Cwd::Guard" : "0",
             "File::Which" : "0",
-            "Module::Build" : "0.4005",
             "Module::Build::XSUtil" : "0.03",
             "parent" : "0"
          }
@@ -69,6 +68,6 @@
          "web" : "https://github.com/karupanerura/Geo-Hex-V3-XS"
       }
    },
-   "version" : "0.08",
-   "x_serialization_backend" : "JSON::PP version 2.27300"
+   "version" : "0.09",
+   "x_serialization_backend" : "JSON::PP version 2.27203"
 }
