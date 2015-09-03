@@ -19,7 +19,7 @@ sub new {
         return $class->_new_with_latlng(@args{qw/lat lng level/});
     }
     elsif (exists $args{x} and exists $args{y} and exists $args{level}) {
-        return $class->_new_with_latlng(@args{qw/x y level/});
+        return $class->_new_with_xy(@args{qw/x y level/});
     }
     else {
         die "Usage: $class->new(code => \$geohex_code) or $class->new(lat => \$lat, lng => \$lng, lng => \$level) or $class->new(x => \$x, y => \$y, lng => \$level)";
