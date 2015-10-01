@@ -2,9 +2,13 @@ Revision history for Perl extension Geo-Hex-V3-XS
 
 {{$NEXT}}
 
+0.11 2015-10-01T02:46:46Z
+
+   - Fixed overflow on 32bit environment.
+
 0.10 2015-09-03T06:43:16Z
 
-    - Fixed x/y/level constructor.
+   - Fixed x/y/level constructor.
 
 0.09 2015-09-03T00:48:30Z
 
