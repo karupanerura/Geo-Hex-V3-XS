@@ -9,6 +9,7 @@ on configure => sub {
 
 on test => sub {
     requires 'Test::More', '0.98';
+    requires 'Test::Number::Delta';
 };
 
 on develop => sub {

@@ -53,7 +53,8 @@
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::More" : "0.98",
+            "Test::Number::Delta" : "0"
          }
       }
    },
